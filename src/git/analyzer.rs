@@ -40,7 +40,7 @@ impl GitAnalyzer {
     }
 
     /// 获取分支的 tree
-    fn get_branch_tree(&self, branch_name: &str) -> Result<git2::Tree> {
+    fn get_branch_tree(&self, branch_name: &str) -> Result<git2::Tree<'_>> {
         let obj = self
             .repo
             .revparse_single(branch_name)
@@ -50,7 +50,7 @@ impl GitAnalyzer {
     }
 
     /// 获取 HEAD 的 tree
-    fn get_head_tree(&self) -> Result<git2::Tree> {
+    fn get_head_tree(&self) -> Result<git2::Tree<'_>> {
         let head = self.repo.head()?;
         let commit = head.peel_to_commit()?;
         Ok(commit.tree()?)

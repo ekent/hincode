@@ -2,16 +2,24 @@
 
 > AI-powered code review tool that understands your code
 >
-> **项目状态**: 📝 调研阶段 → 准备开发
+> **项目状态**: ✅ MVP 完成 (v0.1.0)
 
 ---
 
-## ⚠️ 开发中 / Work in Progress
+## ⚠️ MVP 版本
 
-这个项目目前正处于**调研和设计阶段**。如果你对此感兴趣,欢迎:
+HinCode v0.1.0 已发布! 核心功能可用,正在持续改进中。
 
-- ⭐ Star 这个仓库关注进展
-- 💬 提出你的想法和建议
+**✅ 已实现:**
+- Git diff 提取和分析
+- OpenAI API 集成
+- 多格式输出 (Terminal/Markdown/JSON)
+- 语言自动检测
+
+**⏸️ MVP 限制:**
+- 目前只审查第一个变更文件
+- 暂无配置文件支持 (计划 v0.2)
+- 暂无交互式模式 (计划 v0.4)
 
 ---
 
@@ -29,24 +37,26 @@ HinCode 旨在成为一个:
 
 ## 🚀 快速预览
 
-### 未来的使用方式 (计划中)
+### 快速开始
 
 ```bash
-# 安装 (计划支持)
-cargo install hincode
+# 1. 构建项目
+cargo build --release
 
-# 审查当前分支相对 main 的改动
-hincode
+# 2. 设置 API Key
+export OPENAI_API_KEY=your-key
 
-# 指定 base 分支和文件类型
-hincode --base develop --files "*.rs"
+# 3. 审查代码
+./target/release/hincode
 
-# 专注安全问题
-hincode --focus security
+# 或指定 base 分支
+./target/release/hincode --base develop
 
 # 输出 Markdown 格式 (用于 PR 评论)
-hincode --output markdown > review.md
+./target/release/hincode --output markdown > review.md
 ```
+
+**详细使用说明**: 查看 [QUICKSTART.md](QUICKSTART.md)
 
 ### 期望的输出效果
 
